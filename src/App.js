@@ -62,7 +62,7 @@ function App() {
     <div className="App">
       <div className='search-input'>
         <input onChange={(e) => setQuery(e.target.value)} placeholder='Search Repo' value={query} type='text' />
-        <MagnifyingGlassIcon style={{ width: '30px' }} />
+        <MagnifyingGlassIcon style={{ width: '1.875em' }} />
       </div>
       <div className='filter-container'>
         {sortField.map((el, index) =>
@@ -74,10 +74,10 @@ function App() {
           Array(15).fill("").map((_, i) => {
             return <Loader key={i} />
           })
-          :
-          data && data.length > 0 && data.map((el, index) =>
-            <Card data={el} key={index} />
-          )
+          : (data && !data.length) ? <div>No Such Repositories Found</div>
+            : data && data.map((el, index) =>
+              <Card data={el} key={index} />
+            )
         }
       </div>
     </div>
