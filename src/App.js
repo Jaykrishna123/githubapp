@@ -8,7 +8,7 @@ function App() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
-  const sortField = ["stars", "watchers count", 'scrore', 'created_at', 'updated_at']
+  const sortField = ["stars", "watchers count", 'score', 'created_at', 'updated_at']
 
   useEffect(() => {
     if (query) {
@@ -32,6 +32,9 @@ function App() {
       const responseData = await res.json();
       setLoading(false)
       setData(responseData.items)
+    }
+    else if (value.length < 2) {
+      setData([])
     }
   }
 
